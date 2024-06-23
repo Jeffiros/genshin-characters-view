@@ -1,0 +1,8 @@
+body {
+    background-color: rgba(55, 55, 55, 0.862);
+}
+div button {
+    width: fit-content;
+    text-align: center;
+}
+
