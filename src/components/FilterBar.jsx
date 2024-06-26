@@ -19,10 +19,11 @@ function FilterBar() {
         tabIndex={0}
         className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow gap-1"
       >
-        {elements.map((element) => {
+        {elements.map((element,index) => {
           return (
             <li>
               <button
+                key={index}
                 className={`${
                   element == "pyro"
                     ? "text-red-300 bg-red-500 hover:bg-slate-500"

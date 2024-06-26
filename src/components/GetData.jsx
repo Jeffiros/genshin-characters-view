@@ -24,5 +24,5 @@ export function GetDataHooks() {
     getCharacter();
   }, []);
 
-  return { character, elements, searchText, setSearchText, setCharacter };
+  return { character, elements, searchText, setSearchText, setCharacter, setElements };
 }

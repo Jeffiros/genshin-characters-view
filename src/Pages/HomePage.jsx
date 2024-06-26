@@ -5,14 +5,20 @@ import { GetDataHooks } from "../components/GetData";
 
 export const CharacterDataContext = React.createContext();
 export const elementsDataContext = React.createContext();
+export const searchTextDataContext = React.createContext();
 
 function HomePage() {
-  const { character, elements, setSearchText, searchText } = GetDataHooks();
+  const { character, setCharacter, elements, setSearchText, searchText } =
+    GetDataHooks();
   const characterData = {
     character,
   };
   const elementData = {
     elements,
+  };
+
+  const searchTextData = {
+    searchText,
   };
 
   return (
@@ -31,9 +37,11 @@ function HomePage() {
             />
             <FilterBar />
           </div>
-          <div className="flex justify-center w-full">
-            <CharacterTable />
-          </div>
+          <searchTextDataContext.Provider value={{searchText: searchTextData}}>
+            <div className="flex justify-center w-full">
+              <CharacterTable />
+            </div>
+          </searchTextDataContext.Provider>
         </elementsDataContext.Provider>
       </CharacterDataContext.Provider>
     </>

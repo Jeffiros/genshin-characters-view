@@ -1,15 +1,30 @@
 import { CharacterDataContext } from "../Pages/HomePage";
+import { searchTextDataContext } from "../Pages/HomePage";
 import { useContext } from "react";
 
 function CharacterTable() {
   const context = useContext(CharacterDataContext);
+  const context2 = useContext(searchTextDataContext);
   const characters = context.character.character;
+  const searchTexts = context2.searchText.searchText;
+  
+  console.log("from Homepage: ",searchTexts);
+  console.log("from characters", characters[0].id);
+
+  const filteredCharacters = characters.filter((person)=>{
+    console.log("In filter function: ", searchTexts);
+    if(searchTexts){
+      person.id.includes(searchTexts);
+    }
+  })
+
+  console.log(filteredCharacters);
   
 
   return (
     <>
       <div className="grid max-[450px]:grid-cols-1 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6  grid-flow-row gap-4 pt-10">
-        {characters.map((person) => {
+        {filteredCharacters.map((person) => {
           return (
             <div className="flex flex-col justify-start 
              w-[200px] h-[280px] items-center 
